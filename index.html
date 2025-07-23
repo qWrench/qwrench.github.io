@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mineser</title>
+    <style>
+    
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+          padding: 0px;
+          margin: 0;
+          font-family: "Pixelify Sans", sans-serif;
+          font-weight: 700;
+          font-style: normal;
+          position: relative;
+          height: 80px;
+          background: #006eff;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2rem;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .top-image {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border: 3px solid #000000;
+            border-radius: 20px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .top-image h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #000000;
+            letter-spacing: 0.1em;
+        }
+
+        .small-image {
+            background: #ffffff;
+            border: 3px solid #000000;
+            border-radius: 20px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 150px;
+            left: 20px;
+            z-index: 10;
+        }
+        
+        .small-image-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 210px;
+            left: 150px;
+            z-index: 10;
+        }
+
+        .small-image h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000000;
+            letter-spacing: 0.05em;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 200px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 200px;
+        }
+
+        .button {
+            margin-top: 100;
+            background: #006eff;
+            border: 3px solid #000000;
+            border-radius: 20px;
+            padding: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 100px;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            transform: translateY(-2px);
+        }
+
+        .text-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 3px solid #000000;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 120px;
+            height: 200px;
+            position: relative;
+        }
+
+        .text-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+        }
+
+        .text-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .ip-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .ip-label {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .ip-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ip-copy-box {
+            display: flex;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+
+        .ip-copy-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .ip-label-side {
+            background: #374151;
+            color: white;
+            padding: 20px;
+            width: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 80px;
+        }
+
+        .ip-display-side {
+            background: white;
+            color: #1f2937;
+            padding: 20px 25px;
+            flex: 1;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            border: none;
+            outline: none;
+        }
+
+        .ip-copy-box.copied {
+            border-color: #10b981;
+            animation: copySuccess 0.5s ease;
+        }
+
+        .ip-copy-box.copied .ip-label-side {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MineBump</h1>
+    </header>
+    
+    <div class="main-content">
+        <div class="container">
+            <div class="top-image">
+                <h1>IMAGE</h1>
+            </div>
+            
+            <div class="small-image">
+                <h2>IMAGE</h2>
+            </div>
+            <div class="small-image-text">
+                <h1>Hallo</h1>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="ip-section">
+                <div class="ip-container">
+                    <div class="ip-copy-box" onclick="copyIP()">
+                        <div class="ip-label-side">IP</div>
+                        <div class="ip-display-side" id="serverIP">play.meinserver.de</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-section">
+                <h2>Description</h2>
+                <div class="text-content">
+                    <p>This is a cool Placeholder (NOT SPONSORED BY PLACEHOLDER)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleButtonClick(buttonName) {
+            alert(`${buttonName} hot clicked`);
+        }
+    </script>
+</body>
+</html>
