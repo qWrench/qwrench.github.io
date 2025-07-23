@@ -277,6 +277,39 @@
         function handleButtonClick(buttonName) {
             alert(`${buttonName} hot clicked`);
         }
+
+        function copyIP() {
+            const ipElement = document.getElementById('serverIP');
+            const copyBox = document.querySelector('.ip-copy-box');
+            const notification = document.getElementById('notification');
+            
+            navigator.clipboard.writeText(ipElement.textContent).then(() => {
+                copyBox.classList.add('copied');
+                
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    copyBox.classList.remove('copied');
+                    notification.classList.remove('show');
+                }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = ipElement.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                copyBox.classList.add('copied');
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    copyBox.classList.remove('copied');
+                    notification.classList.remove('show');
+                }, 2000);
+            });
+        }
+        
     </script>
 </body>
 </html>
